@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta name='Docat Wiki Generator' ver='0.0.0.3' warning='Do Not Write To This File, All Data Well Be Lost!' md5='2366acd49d70e12407b14f2af0e78be0' data='09.12.16 20:33:25' />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css.css" />
+</head>
+<body>
+<div class="splash">
+<div class="site">
+<div class="wrap">
+<header>
+<div class="header">
+<div class="header_top cfix">
+<a href="http://github.com/mikelsv/docat" class="logo">docat<span> MikelSV</span></a>
+
+</div>
+
+
+
+<nav class="menuTop cfix">
+<a href="http://centerix.ru/" class="">centerix.ru</a><span></span>
+<a href="https://github.com/mikelsv/docat" class="active">Docat</a><span></span>
+<a href="http://github.com/mikelsv" class="">Git Hub</a>
+</nav>
+
+
+</div>
+</header>
+
+<section class="statistic">
+<div class="statistic cfix" align="left">
+
+
+<h1></h1><hr>
+<table border=0 cellpadding=0 cellspacing=3><tr><td align=center><h3>Contents:</h3></td></tr><tr><td><a href='#Functions'>1 Functions</a></td></tr><tr><td><a href='#Cursors'>1.1 Cursors</a></td></tr><tr><td><a href='#Set'>1.2 Set</a></td></tr><tr><td><a href='#If'>1.3 If</a></td></tr><tr><td><a href='#Msl'>1.4 Msl</a></td></tr><tr><td><a href='#Dir'>1.5 Dir</a></td></tr><tr><td><a href='#Changelog'>1.6 Changelog</a></td></tr></table>
+<h2><span id='Functions'>Functions</span></h2><hr>print - print data to output.
+<br>echo - print data to output.
+<br>print_r() - print array to output.
+<br>array() - create array.
+<br>include() - include msl file.
+<br>substr($text, $from) - return $text from $from to end.
+<br>substr($text, $from, $size) - return $text from $from to $from + size.
+<br>clock() - return clock time.
+<br>time() - get unixtime in sec.
+<br>date($format, $time = time()) - return date string.
+<br>microtime() - get microtime.
+<br>sizeof($array) - get size of array.
+<br>
+<br><h3><span id='Cursors'>Cursors</span></h3>reset($array) - reset cursor.
+<br>$value = prev($array) - return prev key.
+<br>$value = current($array) - return current key.
+<br>$value = next($array) - return next key.
+<br>$value = end($array) - return end key.
+<br>
+<br><h3><span id='Set'>Set</span></h3>isset($val) - return True if value exists.
+<br>unset($val) - destroy value.
+<br>explode($line, $sep) - return array.
+<br>str_replace($line, $from, $to) - replace text.
+<br>
+<br><h3><span id='If'>If</span></h3>if(expression){ Execute this block if expression is true }.
+<br>while(expression){ Execute this block while expression is true }.
+<br>for(expr1; expr2; expr3){ Execute this block while expr2 is true. Execute expr3. }.
+<br>
+<br>continue;
+<br>break;
+<br>return;
+<br>die;
+<br>
+<br><h3><span id='Msl'>Msl</span></h3>msl_info() - get msl info.
+<br>
+<br><h3><span id='Dir'>Dir</span></h3>* $fd = opendir($path) - open dir.
+<br>* $file = readdir($fd) - get file name in dir.
+<br>* bool = closedir($fd) - close dir.
+<br>* bool is_dir($path) - return 1 if this path is directory. Else 0.
+<br>
+<br><h3><span id='Changelog'>Changelog</span></h3>* Fixed continue; in while().</div>
+</section>
+
+
+</div>
+
+
+<footer>
+
+ <div class="footer_menu">
+<nav class="menuTop cfix">
+<a href="http://centerix.ru/" class="">centerix.ru</a><span></span>
+<a href="index.html" class="active">Docat</a><span></span>
+<a href="http://github.com/mikelsv" class="">Git Hub</a>
+</nav>
+ </div>
+
+ <div class="footer_bottom cfix">
+ <div class="footer_bottom_copyright">Copyright c 2016 docat mikelsv</div>
+ <div class="footer_bottom_ssl">
+ </div>
+ </div>
+
+ </footer>
+</div>
+</div></body>
+</html>
