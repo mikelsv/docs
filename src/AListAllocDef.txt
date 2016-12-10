@@ -1,0 +1,61 @@
+AListAllocDef - memory allocator
+
+== About ==
+This is memory allocator used malloc() and free() unctions for allocate and free memory.
+Simple variant memory allocate. 
+
+== Class ==
+<code>AListAllocDef<value type, allocate options></code>
+
+=== Allocate options ===
+By default allocate options = AListCon | AListDes.
+AListCon - Call value type constructor on New().
+AListDes - Call value type destructor in Free().
+
+== Member functions ==
+AListAllocDef() - constructor.
+AllocNew() - return new element.
+AllocFree() - free element. 
+
+== Example ==
+<code>
+AListAllocDef<int, 0> int_list; // List of int, no constructor, no destructor.
+int *i = int_list.AllocNew(); // Allocate new element
+int_list.AllocFree(i); // Free element
+</code>
+
+== Warning ==
+This class don't have memory control. Please free all allocated elements, else memory leak. 
+
+== Source code ==
+<code>
+template<class AListEl, int AListOps = AListCon | AListDes>
+class AListAllocDef{
+
+public:
+	AListAllocDef(){
+	}
+
+	AListEl* AllocNew(){
+		AListEl *el = (AListEl*)malloc(sizeof(AListEl));
+
+		if(AListOps & AListCon)
+			new(el)AListEl;
+		else if(AListOps & AListZero)
+			memset(el, 0, sizeof(AListEl));
+
+		return el;
+	}
+
+	void AllocFree(AListEl *el){
+		if(!el)
+			return ;
+
+		if(AListOps & AListDes)
+			el->~AListEl();
+		free(el);
+		return ;
+	}
+
+};
+</code>

@@ -1,0 +1,17 @@
+msvcore process state
+
+Process state have process info.
+
+== Class ==
+You have use msvcorestate for access to process state.
+Call msvcoremain(args, arg); for initialize class values.
+
+=== Class values ===
+unsigned int procupped; // The start time of the process. Unit time.
+[[MString]] winpath; // Windows home path. (Windows only).
+MString procpath; // Process file path.
+MString thispath; // Curent path.
+[[ILink]] link; // Curerent path in ILink.
+
+=== Example ===
+<code>printf("This path: %s.\r\n", msvcorestate.thispath);</code>

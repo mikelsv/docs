@@ -1,0 +1,34 @@
+AListAllocUList - unlimited memory allocator
+
+== About ==
+This is memory allocator used memory buffers for allocate memory. Fast memory allocate and free. But in real. memory free only in a destructor.
+
+== Class ==
+
+<code>AListAllocUList<value type, allocate options></code>
+
+=== Allocate options ===
+By default allocate options = AListCon | AListDes.
+AListCon - Call value type constructor on New().
+AListDes - Call value type destructor in Free().
+
+== Member functions ==
+AListAllocUList() - constructor.
+AllocNew() - return new element.
+AllocFree() - free element.
+Clean() - free all allocated memory.
+
+== Example ==
+<code>
+AListAllocUList<int, 0> int_list; // List of int, no constructor, no destructor.
+int *i = int_list.AllocNew(); // Allocate new element
+int_list.AllocFree(i); // Free element
+for(int i = 0; i < 1000; i ++)
+	int *j = int_list.AllocNew(); // Multi allocate
+int_list.Clean(); // Free all allocate elements.
+// In addition, the destructor all allocated elements is freed.
+</code>
+
+== Warning ==
+This class free memory only in destructor. In process, memory allocate only. So fast, but use more memory.
+

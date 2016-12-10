@@ -1,0 +1,58 @@
+
+
+== Functions ==
+print - print data to output.
+echo - print data to output.
+print_r() - print array to output.
+array() - create array.
+include() - include msl file.
+substr($text, $from) - return $text from $from to end.
+substr($text, $from, $size) - return $text from $from to $from + size.
+clock() - return clock time.
+time() - get unixtime in sec.
+date($format, $time = time()) - return date string.
+microtime() - get microtime.
+sizeof($array) - get size of array.
+
+=== Cursors ===
+reset($array) - reset cursor.
+$value = prev($array) - return prev key.
+$value = current($array) - return current key.
+$value = next($array) - return next key.
+$value = end($array) - return end key.
+
+=== Set ===
+isset($val) - return True if value exists.
+unset($val) - destroy value.
+explode($sep, $line) - return array.
+str_replace($line, $from, $to) - replace text.
+
+=== If ===
+if(expression){ Execute this block if expression is true }.
+while(expression){ Execute this block while expression is true }.
+for(expr1; expr2; expr3){ Execute this block while expr2 is true. Execute expr3. }.
+
+continue;
+break;
+return;
+die;
+
+=== Msl ===
+msl_info() - get msl info.
+
+=== IO ===
+* $fd = opendir($path) - open dir.
+* $file = readdir($fd) - get file name in dir.
+* bool = closedir($fd) - close dir.
+* bool is_dir($path) - return 1 if this path is directory. Else 0.
+* bool is_file($path) - return 1 if this path is file. Else 0. 
+* file_get_contents($path) - return file data.
+* bool file_put_contents($path, $data) - save file.
+* bool copy($from, $to) - copy file from $from to $to.
+* pathinfo($path) - return path components.
+* mkdir($path) - make directory.
+
+=== Changelog ===
+[0.0.1.2]
+* Fixed continue; in while().
+* Add IO functions.

@@ -1,0 +1,19 @@
+MikelSV Documentation - Index page
+
+== About ==
+This is docamentation for my projects and library.
+
+== Projects ==
+
+=== Documentation ===
+[[docat]] - wiki generator.
+
+== Languages ==
+[[msl-fl]] - My Server language, Fast Line. (Php analog.)
+
+== Library ==
+msvcore - deprecated. Old version.
+[[msvcore2]] - this version of msvcore library. 12 years old. No std, no Qt.
+
+
+

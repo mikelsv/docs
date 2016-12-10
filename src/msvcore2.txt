@@ -1,0 +1,162 @@
+msvcore library
+
+== What is? ==
+It's msvcore - crossplatform library C++. Version 2. First build in 2005.
+
+Build on: Windows, Linux, Android(Jni), flash(Crossbridge).
+
+== License ==
+[[http://choosealicense.com/licenses/mit/|MIT License]].
+
+<pre>
+Copyright (c) 2016 MikelSV
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</pre>
+
+== How to use it ==
+* Create new c++ project.
+* Create new .cpp file.
+* Add code to this file:
+
+<code>
+#define PROJECTNAME "projectname" // Set your project name
+#define PROJECTVER PROJECTNAME ## _versions
+#define USEMSV_GENERALCPP
+
+// Add msvcore v.2
+#include "PATH_TO_MSVCORE/msvcore.cpp" // Set your path
+
+// You may use prject versions
+Versions PROJECTVER[]={
+	// new version to up
+	"0.0.0.1", "01.12.2016 15:51",
+	"0.0.0.0", "23.11.2016 10:45"
+};
+
+// Main
+int main(int args, char* arg[]){
+	msvcoremain(args, arg);
+	print(PROJECTNAME, " v.", PROJECTVER[0].ver," (", PROJECTVER[0].date, ").\r\n");
+
+	// Write your code
+	
+	return 0;
+}
+
+</code>
+
+* Ok. It's simple project.
+
+
+== Base info ==
+
+=== Null-terminate string ===
+Please, don't use null-terminate string. Use [[VString]]. It have unsigned char * data - pointer to data, and unsigned int sz - size. It's sefe. If char * string not contained null - ooops, program may crash. [[VString]] have size, programm don't crash where string have bad data.
+
+
+== Classes ==
+
+=== Core ===
+Versions - project versions.
+[[MsvCoreState]] - process state. (Auto, don't use.)
+ThreadStringCore - Helper for [[TString]] class. (Auto, don't use.)
+MsvCoreActivateSocket - initialize socket. Call WSAStartup() for Windows, signal(SIGPIPE, SIG_IGN) for linux. (Auto, don't use.)
+
+=== String ===
+[[VString]] - Virtual String. Use as string pointer.
+[[MString]] - String. Use as class value.
+[[SString]] - Stack String. Use as temporary.
+[[TString]] - Thread / Temp String use as temporary.
+[[LString]] - Line string. Use for adding strings.
+[[MStringS]] - Short String use for conver ASCII(char) string to utf(short).
+
+=== Allocate ===
+[[AListAllocDef]] - malloc() / free() allocator.
+[[AListAllocUList]] - Unlimited List allocator.
+[[AListAllocOList]] - Object List allocator. Best.
+[[AListAllocOListFast]] - Object List allocator. Need very more memory.
+[[AListAllocOListTree]] - Object List allocator used Tree. So slow. 
+
+=== Dynamic arrays ===
+[[IList]] - Ideal List. Vector. One memory block.
+[[OList]] - Object List. Used [[AListAllocOList]].
+[[UList]] - Unlimited List. Used [[AListAllocUList]].
+[[TrieList]] - [[wikipedia::trie|Trie]] dynamic array.
+
+=== Config ===
+[[ConfLine]] - Configuration file class. Can Get()/Set() key/value.
+[[ConfLineOptions]] - Configuration class. Can only Get() key/value. 
+
+=== Run process ===
+[[PipeLine]] - exec process using [[LString]] bufer.
+[[PipeLine2]] - exec process using ring buffer.
+
+=== Regular extensions ===
+[[MSVEF]] - my variant of regfular extension.
+
+=== Hash ===
+[[Base64]] - encode & decode to base64.
+[[MHash]] - md5, sha1, sha256, rmd1 hash functions.
+
+=== Http ===
+[[MCookie]] - Http cookie container. Cookie array. Generate cookie request.
+[[MHttp]] - Http head class.
+[[GetHttp]] - Http[s] request.
+[[GetHttp2]] - Http[s] request used [[MCookie]].
+
+=== Net ===
+[[ConIp]] - Connect to ip used ip v4 adress. Or listen port. Return SOCKET.
+
+=== Crypto ===
+MsvCoreActivateSsl - initialize SSL. (Auto, don't use.)
+MsspCoreEl - class for testing & find errors.
+[[MySSL]] - OpenSSL helper for accept, connect, recv, send functions. 
+
+=== Buffer ===
+[[RecvData]] - one memory buffer for readed data.
+[[SendData]] - memory buffers.
+[[SendDataRing]] - ring memory buffer.
+
+=== Io ===
+[[ILink]] - Parser web and file link.
+[[Readdir]] - read dir functions.
+
+=== Lock ===
+[[GLock]] - Critical section. Disable double lock, it's deadlock.
+[[TLock]] - Critical section. Enable multilock in one thread.
+[[CLock]] - Condition lock. Lock to signal.
+[[ALock]] - Auto lock/unlock Glock & Tlock.
+
+=== MultiType ===
+[[MultiType]]
+[[MTEDTX]]
+[[MTEV]]
+[[MTEVS]]
+[[MTEVA]]
+
+=== Time ===
+[[MTime]] - Time functions.
+[[MTimer]] - Timer functions.
+
+== Functions ==
+Add functions list.
+
+== Extensions ==
+Add extension info.

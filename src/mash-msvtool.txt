@@ -1,0 +1,61 @@
+Mash - msv autobuild tool
+
+== About ==
+Autobuld script for [[msvcore2]] projects: [[mash]]/mashcore.msl based by [[msl-fl]]. 
+
+== How it work ==
+* File structure:
+<code>
+mash
+msvcore
+...
+mash.msl
+</code>
+
+* Content mash.msl:
+<code>
+<?msl
+ include ('mash/mashcore.msl');
+?>
+</code>
+
+* Run: mash mash.msl $proj $act.
+* $argv - imput arguments. $argv[0] - mash path, next - parameters.
+
+=== Init project data ===
+* $project['ifiles'] - ignore files('mash/mash.ignore').
+* $project['name'] = $proj;
+* $project['path'] = $project['name'] . '/';
+* $project['msvcore_files'] - files used path to msvcore.
+* $project['gitpath'] - git path.
+* $project['testpath'] - test path.
+
+* include($proj . '/project.msl') - This script can modify data.
+
+==== $proj / project.msl ====
+$project['name'] - project name.
+$project['path'] - project path.
+$project['msvcore_use'] - set 1 if this project used msvcore.
+$project['files'] - set project files.
+$project['afiles'] - set all files in project folder without ignored files.
+
+==== $proj / project.mfl ====
+This file contain added project files.
+
+==== Files ====
+$project['files'] - $proj / project.mfl. Files added in project.
+$project['afiles'] - all files in project folder without ignored files.
+
+=== Actions ===
+list - Show $project['files'].
+alist - Show $project['afiles'];
+nlist - Show non project files. $project['afiles'] - $project['files'].
+add mask - Show non project files from mask.
+add mask -y - Add files to project list.
+del mask - Show project files from mask.
+del mask -y - Delete this files from project list.
+togit - copy project files to git path. UpdateFiles().
+localbuild - copy project files to test path. UpdateFiles().
+#remoutebuild - send project files to remote test server. UpdateFiles().
+
+* UpdateFiles operation - if($project['msvcore_use']) $project['msvcore_files'] will be replaced data, from '../msvcore2' to 'msvcore2'.

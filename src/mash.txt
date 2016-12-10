@@ -1,0 +1,27 @@
+mash - my active shell
+
+== About ==
+My active shell - script language based by [[msl-fl]].
+
+== License ==
+MIT License.
+
+== Run ==
+mash script.msh - chdir to script folder and run it.
+
+
+=== Functions ===
+See [[msl-fl]].
+
+=== Mash functions ===
+mash_files_ignore($files, $regexp) - return $files list without $regexp regexp.
+mash_files_select($files, $regexp) - return $files list with $regexp regexp.
+mash_files_del($files, $del) - return $files list without $del files.
+mash_mkdir($path, $dir) - recursive make dir for $dir from $path.
+
+* $files, $del - multiline list "file\r\nfile2\r\n...".
+* $regexp - multiline regexp "*.cpp\r\n*.h\r\n[Dd]ebug/".
+
+
+== Example ==
+Used for autobuild tool, see [[mash-msvtool]].
