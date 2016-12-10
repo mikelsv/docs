@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mash - msv autobuild tool</title>
+<meta name='Docat Wiki Generator' ver='0.0.0.3' warning='Do Not Write To This File, All Data Well Be Lost!' md5='987e8f6d3592b13c0c66e74fe3dc5a46' data='10.12.16 19:13:23' />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css.css" />
+</head>
+<body>
+<div class="splash">
+<div class="site">
+<div class="wrap">
+<header>
+<div class="header">
+<div class="header_top cfix">
+<a href="https://mikelsv.github.io/docs/" class="logo">docs<span> MikelSV</span></a>
+
+</div>
+
+
+
+<nav class="menuTop cfix">
+<a href="http://centerix.ru/" class="">centerix.ru</a><span></span>
+<a href="https://github.com/mikelsv/docs" class="active">Docs</a><span></span>
+<a href="https://github.com/mikelsv/docat" class="">Docat</a><span></span>
+<a href="http://github.com/mikelsv" class="">Git Hub</a>
+</nav>
+
+
+</div>
+</header>
+
+<section class="statistic">
+<div class="statistic cfix" align="left">
+
+
+<h1>Mash - msv autobuild tool</h1><hr>
+<table border=0 cellpadding=0 cellspacing=3><tr><td align=center><h3>Contents:</h3></td></tr><tr><td><a href='#About'>1 About</a></td></tr><tr><td><a href='#How_it_work'>2 How it work</a></td></tr><tr><td><a href='#Init_project_data'>2.1 Init project data</a></td></tr><tr><td><a href='#$proj_/_project.msl'>2.1.1 $proj / project.msl</a></td></tr><tr><td><a href='#$proj_/_project.mfl'>2.1.2 $proj / project.mfl</a></td></tr><tr><td><a href='#Files'>2.1.3 Files</a></td></tr><tr><td><a href='#Actions'>2.2 Actions</a></td></tr></table>
+<h2><span id='About'>About</span></h2><hr>Autobuld script for <a href='msvcore2.html' title='msvcore library'>msvcore2</a> projects: <a href='mash.html' title='mash - my active shell'>mash</a>/mashcore.msl based by <a href='msl-fl.html'>msl-fl</a>. 
+<br>
+<br><h2><span id='How_it_work'>How it work</span></h2><hr>* File structure:
+<br><pre>
+mash
+msvcore
+...
+mash.msl
+</pre>
+<br>
+<br>* Content mash.msl:
+<br><pre>
+&lt;?msl
+ include ('mash/mashcore.msl');
+?>
+</pre>
+<br>
+<br>* Run: mash mash.msl $proj $act.
+<br>* $argv - imput arguments. $argv[0] - mash path, next - parameters.
+<br>
+<br><h3><span id='Init_project_data'>Init project data</span></h3>* $project['ifiles'] - ignore files('mash/mash.ignore').
+<br>* $project['name'] = $proj;
+<br>* $project['path'] = $project['name'] . '/';
+<br>* $project['msvcore_files'] - files used path to msvcore.
+<br>* $project['gitpath'] - git path.
+<br>* $project['testpath'] - test path.
+<br>
+<br>* include($proj . '/project.msl') - This script can modify data.
+<br>
+<br><h4><span id='$proj_/_project.msl'>$proj / project.msl</span></h4>$project['name'] - project name.
+<br>$project['path'] - project path.
+<br>$project['msvcore_use'] - set 1 if this project used msvcore.
+<br>$project['files'] - set project files.
+<br>$project['afiles'] - set all files in project folder without ignored files.
+<br>
+<br><h4><span id='$proj_/_project.mfl'>$proj / project.mfl</span></h4>This file contain added project files.
+<br>
+<br><h4><span id='Files'>Files</span></h4>$project['files'] - $proj / project.mfl. Files added in project.
+<br>$project['afiles'] - all files in project folder without ignored files.
+<br>
+<br><h3><span id='Actions'>Actions</span></h3>list - Show $project['files'].
+<br>alist - Show $project['afiles'];
+<br>nlist - Show non project files. $project['afiles'] - $project['files'].
+<br>add mask - Show non project files from mask.
+<br>add mask -y - Add files to project list.
+<br>del mask - Show project files from mask.
+<br>del mask -y - Delete this files from project list.
+<br>togit - copy project files to git path. UpdateFiles().
+<br>localbuild - copy project files to test path. UpdateFiles().
+<br>#remoutebuild - send project files to remote test server. UpdateFiles().
+<br>
+<br>* UpdateFiles operation - if($project['msvcore_use']) $project['msvcore_files'] will be replaced data, from '../msvcore2' to 'msvcore2'.
+<br></div>
+</section>
+
+
+</div>
+
+
+<footer>
+
+ <div class="footer_menu">
+
+<nav class="menuTop cfix">
+<a href="http://centerix.ru/" class="">centerix.ru</a><span></span>
+<a href="https://github.com/mikelsv/docs" class="active">Docs</a><span></span>
+<a href="https://github.com/mikelsv/docat" class="">Docat</a><span></span>
+<a href="http://github.com/mikelsv" class="">Git Hub</a>
+</nav>
+ </div>
+
+ <div class="footer_bottom cfix">
+ <div class="footer_bottom_copyright">Copyright c 2016 docat mikelsv</div>
+ <div class="footer_bottom_ssl">
+ </div>
+ </div>
+
+ </footer>
+</div>
+</div></body>
+</html>
