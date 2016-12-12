@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GetHttp - Http request</title>
+<meta name='Docat Wiki Generator' ver='0.0.0.3' warning='Do Not Write To This File, All Data Well Be Lost!' md5='fc0f9b5b31fe97c84c3ab834c2e5382c' data='12.12.16 09:09:54' />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css.css" />
+</head>
+<body>
+<div class="splash">
+<div class="site">
+<div class="wrap">
+<header>
+<div class="header">
+<div class="header_top cfix">
+<a href="https://mikelsv.github.io/docs/" class="logo">docs<span> MikelSV</span></a>
+
+</div>
+
+
+
+<nav class="menuTop cfix">
+<a href="http://centerix.ru/" class="">centerix.ru</a><span></span>
+<a href="https://github.com/mikelsv/docs" class="active">Docs</a><span></span>
+<a href="https://github.com/mikelsv/docat" class="">Docat</a><span></span>
+<a href="http://github.com/mikelsv" class="">Git Hub</a>
+</nav>
+
+
+</div>
+</header>
+
+<section class="statistic">
+<div class="statistic cfix" align="left">
+
+
+<h1>GetHttp - Http request</h1><hr>
+Class GetHttp send http(s) request.
+<br>
+<br><table border=0 cellpadding=0 cellspacing=3><tr><td align=center><h3>Contents:</h3></td></tr><tr><td><a href='#Functions'>1 Functions</a></td></tr><tr><td><a href='#Protected'>1.1 Protected</a></td></tr><tr><td><a href='#SSL'>1.2 SSL</a></td></tr></table>
+<h2><span id='Functions'>Functions</span></h2><hr>* GetHttp() - constructor.
+<br>* void Clean() - reset.
+<br>* void SetMethod(VString) - set request method.
+<br>* VString GetMethod() - get request method.
+<br>* void SetAgent(VString) - set user agent.
+<br>* VString GetAgent() - get user agent.
+<br>* void SetAccept(VString) - set accept.
+<br>* VString GetAccept() - get accept.
+<br>* void SetPost(VString) - set post data,
+<br>* VString GetPost() - get post data.
+<br>* void SetBoundary(VString id, VString val) - set http request boundary id.
+<br>* void SetHeader(VString) - set new header.
+<br>* void SetMinimal(bool) - set minimal request.
+<br>* SetProgress(int progress, int all) - set progress.
+<br>* ClearProgress() - clear progress.
+<br>* <a href='MHttp.html'>MHttp[BAD LINK]</a>& GetHead() - return head.
+<br>* VString GetHead(VString name) - return value for "name" head.
+<br>* VString GetData() - get responce body.
+<br>* void SetCookies(VString) - set cookies.
+<br>* VString GetCookies() - get cookies.
+<br>* void SetUseSSL(bool) - set use ssl.
+<br>* bool GetUseSSL() - ssl is use.
+<br>* void SetTimeout(int) - set timeout in sec, 30 sec by default.
+<br>* void SetRepeat(int) - set repeat count if request fail.
+<br>
+<br>* static MString EncodeUrl(VString url) - Encode url.
+<br>* static MString EncodePar(VString line) - Encode parameters.
+<br>* static TString DecodePostValue(VString val) - decode POST value.
+<br>
+<br>* void AddBoundary(LString &ls, VString bnid, VString key, VString val) - add boundary.
+<br>* void AddBoundaryFile(LString &ls, VString bnid, VString key, VString name, VString val) - add boundary file.
+<br>* void AddBoundaryEnd(LString &ls, VString bnid) - add boundary end.
+<br>
+<br>* int Request(VString url) - send request to url.
+<br>
+<br>* int64 GetRecvSz() - get all recive bytes.
+<br>* int64 GetSendSz() - get all send bytes.
+<br>
+<br><h3><span id='Protected'>Protected</span></h3>* int DoRequest(VString url) - Send request to url.
+<br>* int Recv(SOCKET sock) - Recive data.
+<br>
+<br><h3><span id='SSL'>SSL</span></h3>* int send(SOCKET sock, const char *buf, int sz) - send data.
+<br>* int recv(SOCKET sock, char *buf, int sz) - recive data.
+<br></div>
+</section>
+
+
+</div>
+
+
+<footer>
+
+ <div class="footer_menu">
+
+<nav class="menuTop cfix">
+<a href="http://centerix.ru/" class="">centerix.ru</a><span></span>
+<a href="https://github.com/mikelsv/docs" class="active">Docs</a><span></span>
+<a href="https://github.com/mikelsv/docat" class="">Docat</a><span></span>
+<a href="http://github.com/mikelsv" class="">Git Hub</a>
+</nav>
+ </div>
+
+ <div class="footer_bottom cfix">
+ <div class="footer_bottom_copyright">Copyright c 2016 docat mikelsv</div>
+ <div class="footer_bottom_ssl">
+ </div>
+ </div>
+
+ </footer>
+</div>
+</div></body>
+</html>
