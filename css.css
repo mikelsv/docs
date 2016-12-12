@@ -68,7 +68,7 @@ b, strong {
 h1 {
     font-weight: normal;
     color: #323d4c;
-    text-transform: uppercase;
+    //text-transform: uppercase;
     font-size: 61px;
     padding: 50px 0;
     margin: 0;

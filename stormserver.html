@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Storm server</title>
+<meta name='Docat Wiki Generator' ver='0.0.0.3' warning='Do Not Write To This File, All Data Well Be Lost!' md5='2e07d518542d2789450882f4b518c0df' data='13.12.16 01:28:52' />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css.css" />
+</head>
+<body>
+<div class="splash">
+<div class="site">
+<div class="wrap">
+<header>
+<div class="header">
+<div class="header_top cfix">
+<a href="https://mikelsv.github.io/docs/" class="logo">docs<span> MikelSV</span></a>
+
+</div>
+
+
+
+<nav class="menuTop cfix">
+<a href="http://centerix.ru/" class="">centerix.ru</a><span></span>
+<a href="https://github.com/mikelsv/docs" class="active">Docs</a><span></span>
+<a href="https://github.com/mikelsv/docat" class="">Docat</a><span></span>
+<a href="http://github.com/mikelsv" class="">Git Hub</a>
+</nav>
+
+
+</div>
+</header>
+
+<section class="statistic">
+<div class="statistic cfix" align="left">
+
+
+<h1>Storm server</h1><hr>
+<table border=0 cellpadding=0 cellspacing=3><tr><td align=center><h3>Contents:</h3></td></tr><tr><td><a href='#About'>1 About</a></td></tr><tr><td><a href='#How_to_use_it'>2 How to use it</a></td></tr><tr><td><a href='#Configure'>2.1 Configure</a></td></tr><tr><td><a href='#Options'>2.1.1 Options</a></td></tr><tr><td><a href='#Run'>2.2 Run</a></td></tr><tr><td><a href='#Handler'>2.3 Handler</a></td></tr><tr><td><a href='#Echo'>2.3.1 Echo</a></td></tr><tr><td><a href='#Command'>2.3.2 Command</a></td></tr></table>
+<h2><span id='About'>About</span></h2><hr>Storm server is fast server. Use nonblocking calls.
+<br>
+<br><h2><span id='How_to_use_it'>How to use it</span></h2><hr>* Include <a href='msvcore2.html' title='msvcore library'>msvcore2</a>.
+<br>* Add stormserver extension #define USEMSV_STORMSERVER.
+<br>* You can create or use an existing handler.
+<br>* Configure server.
+<br>* Run server.
+<br>
+<br><h3><span id='Configure'>Configure</span></h3>By default #define STORMSERVER_CONFIG "stormserver.conf".
+<br>You can set new define for config path.
+<br>
+<br><h4><span id='Options'>Options</span></h4>Listen [ip:]port [type] - Open port. Set Listen for each port. Max ports - 32.
+<br>
+<br>* type - default handler name for this port. Set name in MyStormServer.InsertProto();
+<br>
+<br><h3><span id='Run'>Run</span></h3><pre>
+int RunStormServer(){
+        // By default
+	// MyStormServer.UseConf(STORMSERVER_CONFIG);
+
+	// Set handler. Add http listener class.
+	MyStormServer.InsertProto("http", listen_http::static_storm_new());
+
+	// Run server
+	MyStormServer.Run();
+
+	return 0;
+}
+</pre>
+<br>
+<br><h3><span id='Handler'>Handler</span></h3>Based on <a href='storm_item.html' title='Storm core item'>storm_item</a> class. Se it for more info.
+<br>
+<br><h4><span id='Echo'>Echo</span></h4>Example of simple echo server.
+<br><pre>
+class listen_example : public listen_item{
+
+	// Call on recive data.
+	virtual void storm_recv(storm_work_el &wel, VString read){
+		// wel - working element, use it to send command.
+		// read - readed data.
+
+		// Send all readed data
+		wel.send(read);
+		
+		// Say: i'm read read.size() bytes, thanks.
+		wel.readed(read);
+
+		// Or read half bytes. Moved read pointer.
+		wel.readed(read, read.size() / 2);
+
+		// You can read part data. Unused data will be in read, in next recive data.
+
+		return ;
+	}
+
+	STORM_DEFINE_NEW_DELETE(listen_example);
+};
+
+STORM_DEFINE_NEW_DELETE_OK(listen_example);
+</pre>
+<br>
+<br>* STORM_DEFINE_NEW_DELETE - add static elements list, and storm_new(), storm_delete(), static_storm_new() functions.
+<br>* STORM_DEFINE_NEW_DELETE_OK - need for static elements list.
+<br>
+<br>
+<br><h4><span id='Command'>Command</span></h4>Example of simple command server, storm_recv() function.
+<br><pre>
+	// Call on recive data.
+	virtual void storm_recv(storm_work_el &wel, VString read){
+		// wel - working element, use it to send command.
+		// read - readed data.
+
+		// Command is: "line\r\n".
+
+		// PartLine return part line, use delimeter.
+		VString cmd = PartLine(read, read, "\r\n");
+
+		// Hint. read.data is null if "\r\n" not found.
+		if(!read.data){
+			// Sumbols "\r\n" not found.
+			return ;
+		}else{
+			// Data used.
+			wel.readed(cmd.size() + 2 ); // Command size + "\r\n" size
+		}
+
+		
+
+		// if
+		if(cmd == "hello"){
+			// Send data
+			wel.send("hello\r\n");
+		}
+		else if(cmd == "bye"){
+			wel.send("bye bye.\r\n");
+			// Close connection
+			wel.close();
+		}
+		else{
+			wel.send("Unsupported command: ");
+			wel.send(cmd);
+			wel.send("\r\n");
+		}
+
+		// Call storm_recv for next command. Or need while().
+		storm_recv(wel, read);
+
+		return ;
+	}
+</pre></div>
+</section>
+
+
+</div>
+
+
+<footer>
+
+ <div class="footer_menu">
+
+<nav class="menuTop cfix">
+<a href="http://centerix.ru/" class="">centerix.ru</a><span></span>
+<a href="https://github.com/mikelsv/docs" class="active">Docs</a><span></span>
+<a href="https://github.com/mikelsv/docat" class="">Docat</a><span></span>
+<a href="http://github.com/mikelsv" class="">Git Hub</a>
+</nav>
+ </div>
+
+ <div class="footer_bottom cfix">
+ <div class="footer_bottom_copyright">Copyright c 2016 docat mikelsv</div>
+ <div class="footer_bottom_ssl">
+ </div>
+ </div>
+
+ </footer>
+</div>
+</div></body>
+</html>

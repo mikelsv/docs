@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Storm core item</title>
+<meta name='Docat Wiki Generator' ver='0.0.0.3' warning='Do Not Write To This File, All Data Well Be Lost!' md5='6c9aa4ff3192b48b1a6ce53670b19ed4' data='13.12.16 01:28:36' />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css.css" />
+</head>
+<body>
+<div class="splash">
+<div class="site">
+<div class="wrap">
+<header>
+<div class="header">
+<div class="header_top cfix">
+<a href="https://mikelsv.github.io/docs/" class="logo">docs<span> MikelSV</span></a>
+
+</div>
+
+
+
+<nav class="menuTop cfix">
+<a href="http://centerix.ru/" class="">centerix.ru</a><span></span>
+<a href="https://github.com/mikelsv/docs" class="active">Docs</a><span></span>
+<a href="https://github.com/mikelsv/docat" class="">Docat</a><span></span>
+<a href="http://github.com/mikelsv" class="">Git Hub</a>
+</nav>
+
+
+</div>
+</header>
+
+<section class="statistic">
+<div class="statistic cfix" align="left">
+
+
+<h1>Storm core item</h1><hr>
+This storm_item - base storm items class. Use it for parent for you handler class.
+<br>See <a href='storm_work_el.html' title='Storm working element'>storm_work_el</a> - storm working element, use for configure connection.
+<br>See <a href='storm_socket.html' title='Storm socket'>storm_socket</a> - use for send() data to socket, close(), user signal().
+<br>
+<br><table border=0 cellpadding=0 cellspacing=3><tr><td align=center><h3>Contents:</h3></td></tr><tr><td><a href='#Members'>1 Members</a></td></tr><tr><td><a href='#Also'>2 Also</a></td></tr></table>
+<h2><span id='Members'>Members</span></h2><hr>* virtual void storm_init() - call on initailize class.
+<br>* virtual void storm_start() - call on added to server.
+<br>* virtual void storm_stop() - call on connection closed.
+<br>
+<br>* virtual void storm_setsock(StormCoreVirtual *core, storm_socket_data *data) - call on added to server.
+<br>
+<br>* virtual int storm_socket_recv(SOCKET sock, char *data, int sz, int flag) - call on recive data.
+<br>* virtual int storm_socket_send(SOCKET sock, char *data, int sz, int flag) - call on send data.
+<br>
+<br>* virtual void storm_recv(storm_work_el &wel, VString read) - call on data readed.
+<br>* virtual int storm_send(storm_work_el &wel, VString send){ return 0; } - call on can send.
+<br>* virtual void storm_timeout(storm_work_el &wel){ wel.close(); } - call on timeout.
+<br>* virtual void storm_signal(storm_socket *ssock, int sid, void *data) - call on user signal.
+<br>
+<br><h2><span id='Also'>Also</span></h2><hr>* Redefine storm_socket_recv() and storm_socket_send() for use non standart recv() and send(). Example: use ssl.Recv() and ssl.Send().</div>
+</section>
+
+
+</div>
+
+
+<footer>
+
+ <div class="footer_menu">
+
+<nav class="menuTop cfix">
+<a href="http://centerix.ru/" class="">centerix.ru</a><span></span>
+<a href="https://github.com/mikelsv/docs" class="active">Docs</a><span></span>
+<a href="https://github.com/mikelsv/docat" class="">Docat</a><span></span>
+<a href="http://github.com/mikelsv" class="">Git Hub</a>
+</nav>
+ </div>
+
+ <div class="footer_bottom cfix">
+ <div class="footer_bottom_copyright">Copyright c 2016 docat mikelsv</div>
+ <div class="footer_bottom_ssl">
+ </div>
+ </div>
+
+ </footer>
+</div>
+</div></body>
+</html>
